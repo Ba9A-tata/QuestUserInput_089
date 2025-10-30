@@ -3,8 +3,10 @@ package com.example.userinput
 import android.R.attr.value
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -13,35 +15,50 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.unit.dp
 import java.lang.reflect.Modifier
 
 @Composable
 fun FormDataDiri(modifier: Modifier
-){
+) {
+
     var textNama by remember { mutableStateOf("") }
-    var textAlamat by remember {mutableStateOf("") }
-    var textJK by remember {mutableListOf("")}
+    var textAlamat by remember { mutableStateOf("") }
+    var textJK by remember { mutableStateOf("") }
 
-    var nama by remember {mutableListOf("")}
-    var alamat by remember {mutableListOf("")}
-    var jenis by remember {mutableListOf("")}
+    var nama by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
+    var jenis by remember { mutableStateOf("") }
 
-    val gender.List<String> = listOf("Laki-laki" ,"Perempuan")
+    val gender:List<String> = listOf("Laki-laki","Perempuan")
 
     Column(modifier = Modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment =  Alignment.CenterHorizontally) {
+        horizontalAlignment = Alignment.CenterHorizontally) {
         OutlinedTextField(
             value = textNama,
             singleLine = true,
             shape = MaterialTheme.shapes.large,
-            modifier = Modifer.width(250.dp),
-            label = { Text("Nama Lengkap") },
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Nama Lengkap") },
             onValueChange = {
-                textNama it
+                textNama = it
             }
         )
-
+        Row {
+            gender.forEach { item ->
+                Row(modifier = Modifier.selectable(
+                    selected = textJK == item,
+                    onClick = {textJK = item}
+                ), verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = textJK == item,
+                        onClick = {
+                            textJK = item
+                        })
+                    Text(item)
+                }
+            }
+        }
     }
-
 }
