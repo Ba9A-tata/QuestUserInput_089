@@ -4,6 +4,7 @@ import android.R.attr.value
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -14,7 +15,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import java.lang.reflect.Modifier
 
@@ -69,5 +72,13 @@ fun FormDataDiri(modifier: Modifier
                 textAlamat = it
             }
         )
+        Divider(
+            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium),dimensionResource(
+                R.dimen.padding_medium
+            )),
+            thickness = dimensionResource(R.dimen.divider_tipis),
+            color = Color.DarkGray
+        )
+
     }
 }
