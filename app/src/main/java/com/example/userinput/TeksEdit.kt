@@ -15,7 +15,9 @@ fun FormDataDiri(modifier: Modifier
     var textAlamat by remember {mutableStateOf("") }
     var textJK by remember {mutableListOf(value"")}
 
-
+    var nama by remember {mutableListOf(value"")}
+    var alamat by remember {mutableListOf(value"")}
+    var jenis by remember {mutableListOf(value"")}
 
 
 
